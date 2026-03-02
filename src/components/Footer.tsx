@@ -20,7 +20,7 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: <Instagram className="w-5 h-5" />, path: 'https://instagram.com', label: 'Instagram' },
+    { icon: <Instagram className="w-5 h-5" />, path: 'https://www.instagram.com/aurelion.jewelry/', label: 'Instagram' },
     { icon: <Facebook className="w-5 h-5" />, path: 'https://facebook.com', label: 'Facebook' },
     { icon: <Linkedin className="w-5 h-5" />, path: 'https://linkedin.com', label: 'LinkedIn' },
   ];
