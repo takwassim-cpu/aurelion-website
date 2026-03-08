@@ -15,6 +15,7 @@ import Sustainability from './pages/Sustainability';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import CookiePolicy from './pages/CookiePolicy';
+import NotFound from './pages/NotFound';
 import SlideOutCart from './components/SlideOutCart';
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsOfService />} />
               <Route path="/cookies" element={<CookiePolicy />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
           <Footer />
