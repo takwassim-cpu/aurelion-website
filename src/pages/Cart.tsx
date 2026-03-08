@@ -1,17 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Trash2, ArrowRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 const Cart = () => {
   const { cartItems, removeFromCart } = useCart();
-  const navigate = useNavigate();
 
   const removeItem = (id: string) => {
     removeFromCart(id);
-  };
-
-  const handleCheckout = () => {
-    navigate('/checkout');
   };
 
 
@@ -82,13 +77,13 @@ const Cart = () => {
                 <p className="font-sans text-sm text-warm-gray">Pricing will be provided upon inquiry</p>
               </div>
 
-              <button
-                onClick={handleCheckout}
+              <Link
+                to="/checkout"
                 className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-obsidian text-alabaster font-sans text-sm uppercase tracking-widest font-bold overflow-hidden transition-all duration-500 hover:bg-champagne hover:text-obsidian hover:shadow-2xl hover:shadow-champagne/30 mb-4"
               >
                 <span className="relative z-10">Proceed to Checkout</span>
                 <ArrowRight className="relative z-10 w-5 h-5 transition-transform duration-300" />
-              </button>
+              </Link>
 
               <Link
                 to="/collection"

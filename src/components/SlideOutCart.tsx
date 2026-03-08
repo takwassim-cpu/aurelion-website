@@ -1,15 +1,9 @@
 import { X, Trash2, ArrowRight } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 const SlideOutCart = () => {
     const { cartItems, removeFromCart, isCartOpen, setIsCartOpen } = useCart();
-    const navigate = useNavigate();
-
-    const handleCheckout = () => {
-        setIsCartOpen(false);
-        navigate('/checkout');
-    };
 
     return (
         <>
@@ -92,13 +86,14 @@ const SlideOutCart = () => {
                             <p className="font-sans text-xs text-warm-gray tracking-wide">Pricing provided upon inquiry</p>
                         </div>
 
-                        <button
-                            onClick={handleCheckout}
+                        <Link
+                            to="/checkout"
+                            onClick={() => setIsCartOpen(false)}
                             className="btn-fill-left w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-obsidian text-alabaster font-sans text-[11px] uppercase tracking-[0.2em] font-semibold transition-all duration-500 hover:shadow-2xl hover:shadow-champagne/20"
                         >
                             <span>Secure Checkout</span>
                             <ArrowRight className="w-4 h-4" />
-                        </button>
+                        </Link>
                     </div>
                 )}
             </div>
