@@ -176,7 +176,7 @@ const Collection = () => {
           <h1 className="font-serif text-h1 md:text-[56px] md:leading-[64px] text-obsidian uppercase tracking-luxury">
             {categoryTitle}
           </h1>
-          <p className="font-serif text-lg md:text-xl italic text-warm-gray mt-6 max-w-2xl leading-relaxed">
+          <p className="font-serif text-xl md:text-2xl italic text-obsidian/80 mt-6 max-w-2xl leading-relaxed font-light">
             Each piece in our collection represents the pinnacle of lab-grown diamond craftsmanship.
           </p>
         </div>
