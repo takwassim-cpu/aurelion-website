@@ -2,48 +2,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, ShoppingBag, Shield, Gem, Heart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
-interface Product {
-  id: string;
-  name: string;
-  shape: string;
-  carat: number;
-  color: string;
-  clarity: string;
-  price: number;
-  image: string;
-  category: string;
-}
-
-const mockProducts: Product[] = [
-  // Engagement Rings (6)
-  { id: 'e1', name: 'The Eternal Solitaire — Round', shape: 'round', carat: 2.0, color: 'D', clarity: 'VVS1', price: 18500, image: '/images/Engagement Rings/Eternal Solitaire -Round Brilliant.png', category: 'engagement' },
-  { id: 'e2', name: 'Halo Light — Oval Halo', shape: 'oval', carat: 1.6, color: 'E', clarity: 'VS1', price: 14200, image: '/images/Engagement Rings/Vintage Romance — Oval Pavé.png', category: 'engagement' },
-  { id: 'e3', name: 'Princess Grace — Pavé Princess', shape: 'princess', carat: 1.5, color: 'E', clarity: 'VVS2', price: 13200, image: '/images/Engagement Rings/Princess Elegance —Princess Cut.png', category: 'engagement' },
-  { id: 'e4', name: 'Emerald Signature — Step Cut Solitaire', shape: 'emerald', carat: 2.4, color: 'D', clarity: 'VVS2', price: 24500, image: '/images/Engagement Rings/Emerald Luxe —  Emerald Cut.png', category: 'engagement' },
-  { id: 'e5', name: 'Cushion Charm — Vintage Halo', shape: 'cushion', carat: 2.1, color: 'F', clarity: 'VS2', price: 16800, image: '/images/Engagement Rings/Halo Dream —Cushion Cut.png', category: 'engagement' },
-  { id: 'e6', name: 'Trilogy Radiant — Three-Stone Radiant', shape: 'radiant', carat: 1.9, color: 'E', clarity: 'VS1', price: 15500, image: '/images/Engagement Rings/Three Stone Legacy —.png', category: 'engagement' },
-
-  // Wedding Bands (3)
-  { id: 'w1', name: 'Eternity Full — Pavé Full Eternity Band', shape: 'band', carat: 0.0, color: '-', clarity: '-', price: 4200, image: '/images/Wedding Bands/white-gold-pave.png', category: 'wedding' },
-  { id: 'w2', name: 'Eternity Half — Half Pavé Band', shape: 'band', carat: 0.0, color: '-', clarity: '-', price: 3200, image: '/images/Wedding Bands/two-tone-twisted.png', category: 'wedding' },
-  { id: 'w3', name: 'Classic Plain Gold — Polished Comfort Fit', shape: 'band', carat: 0.0, color: '-', clarity: '-', price: 1200, image: '/images/Wedding Bands/classic-gold-band.png', category: 'wedding' },
-
-  // Fine Jewelry (6)
-  { id: 'j1', name: 'Radiance Tennis Bracelet — 4.5ct Total', shape: 'bracelet', carat: 4.5, color: 'G', clarity: 'VS2', price: 11200, image: '/images/Fine Jewelry/radiance-tennis-bracelet.png', category: 'jewelry' },
-  { id: 'j2', name: 'Lumière Diamond Studs — Classic Stud Earrings', shape: 'earrings', carat: 1.2, color: 'F', clarity: 'VVS1', price: 6800, image: '/images/Fine Jewelry/Lumière Diamond Studs — Classic Stud Earrings.png', category: 'jewelry' },
-  { id: 'j3', name: 'Solitaire Pendant — Minimal Gold Pendant', shape: 'pendant', carat: 0.8, color: 'E', clarity: 'VS1', price: 4200, image: '/images/Fine Jewelry/Solitaire Pendant — Minimal Gold Pendant.png', category: 'jewelry' },
-  { id: 'j4', name: 'Orbit Hoops — Diamond Hoop Earrings', shape: 'hoops', carat: 1.6, color: 'G', clarity: 'VS2', price: 5400, image: '/images/Fine Jewelry/Orbit Hoops — Diamond Hoop Earrings.png', category: 'jewelry' },
-  { id: 'j5', name: 'Bangle of Light — Diamond Bangle', shape: 'bangle', carat: 2.8, color: 'F', clarity: 'VVS2', price: 9800, image: '/images/Fine Jewelry/Bangle of Light — Diamond Bangle.png', category: 'jewelry' },
-  { id: 'j6', name: 'Cascade Drops — Diamond Drop Earrings', shape: 'drop', carat: 1.4, color: 'E', clarity: 'VS1', price: 7300, image: '/images/Fine Jewelry/Cascade Drops — Diamond Drop Earrings.png', category: 'jewelry' },
-
-  // Loose Diamonds (6)
-  { id: 'l1', name: 'Pear Perfection — 1.8ct Fancy Cut', shape: 'pear', carat: 1.8, color: 'D', clarity: 'VVS1', price: 14400, image: '/images/Loose Diamonds/pear.png', category: 'loose' },
-  { id: 'l2', name: 'Marquise Majesty — 2.1ct Brilliant', shape: 'marquise', carat: 2.1, color: 'E', clarity: 'VVS2', price: 15800, image: '/images/Loose Diamonds/marquise.png', category: 'loose' },
-  { id: 'l3', name: 'Heart of Light — 1.2ct Fancy Heart', shape: 'heart', carat: 1.2, color: 'F', clarity: 'VS1', price: 9600, image: '/images/Loose Diamonds/heart.png', category: 'loose' },
-  { id: 'l4', name: 'Asscher Allure — 2.0ct Step Cut', shape: 'asscher', carat: 2.0, color: 'D', clarity: 'VVS2', price: 17200, image: '/images/Loose Diamonds/asscher.png', category: 'loose' },
-  { id: 'l5', name: 'Oval Horizon — 1.7ct Oval Cut', shape: 'oval', carat: 1.7, color: 'E', clarity: 'VS1', price: 12800, image: '/images/Loose Diamonds/oval.png', category: 'loose' },
-  { id: 'l6', name: 'Round Brilliant — 2.5ct Classic Round', shape: 'round', carat: 2.5, color: 'D', clarity: 'VVS1', price: 32500, image: '/images/Loose Diamonds/round-brilliant.png', category: 'loose' },
-];
+import { mockProducts } from '../data/products';
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
