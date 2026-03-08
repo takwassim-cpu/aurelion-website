@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Trash2, ArrowRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 const Cart = () => {
   const { cartItems, removeFromCart } = useCart();
+  const navigate = useNavigate();
 
   const removeItem = (id: string) => {
     removeFromCart(id);
   };
 
   const handleCheckout = () => {
-    alert('Proceeding to checkout... (Coming soon)');
-    // In a real app, this would redirect to a checkout page or process payment
+    navigate('/checkout');
   };
 
 

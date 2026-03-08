@@ -1,14 +1,14 @@
 import { X, Trash2, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 const SlideOutCart = () => {
     const { cartItems, removeFromCart, isCartOpen, setIsCartOpen } = useCart();
-
-
+    const navigate = useNavigate();
 
     const handleCheckout = () => {
-        alert('Proceeding to checkout... (Coming soon)');
+        setIsCartOpen(false);
+        navigate('/checkout');
     };
 
     return (
