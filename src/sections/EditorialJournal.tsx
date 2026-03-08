@@ -29,12 +29,12 @@ const articles: Article[] = [
     readTime: '6 MIN READ',
   },
   {
-    id: 'celebrity-moments',
-    title: 'Red Carpet Moments',
-    excerpt: 'Explore how lab-grown diamonds are becoming the choice of celebrities and style icons worldwide.',
-    image: '/images/journal/celebrity-moments.png',
-    category: 'LIFESTYLE',
-    readTime: '5 MIN READ',
+    id: 'sustainable-luxury',
+    title: 'The Future of Sustainable Luxury',
+    excerpt: 'Aurelion combines heritage craftsmanship with ethical innovation to redefine modern excellence.',
+    image: '/images/journal/sustainable-luxury.png',
+    category: 'ETHICS',
+    readTime: '6 MIN READ',
   },
 ];
 
@@ -60,16 +60,15 @@ const EditorialJournal = () => {
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="section-padding bg-alabaster"
     >
       <div className="container-luxury">
         {/* Section Header */}
-        <div 
-          className={`flex flex-col md:flex-row md:items-end md:justify-between mb-12 md:mb-16 transition-all duration-800 ease-luxury ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+        <div
+          className={`flex flex-col md:flex-row md:items-end md:justify-between mb-12 md:mb-16 transition-all duration-800 ease-luxury ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
           <div>
             <p className="font-sans text-label uppercase tracking-label text-champagne mb-4">
@@ -93,9 +92,8 @@ const EditorialJournal = () => {
           {articles.map((article, index) => (
             <article
               key={article.id}
-              className={`group transition-all duration-800 ease-luxury ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
+              className={`group transition-all duration-800 ease-luxury ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
               style={{ transitionDelay: `${index * 150 + 200}ms` }}
             >
               <Link to={`/journal/${article.id}`} className="block">
@@ -108,7 +106,7 @@ const EditorialJournal = () => {
                   />
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-obsidian/0 group-hover:bg-obsidian/10 transition-all duration-500" />
-                  
+
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
                     <span className="inline-block px-3 py-1 bg-alabaster font-sans text-[10px] uppercase tracking-label text-obsidian">
